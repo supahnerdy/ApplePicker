@@ -736,14 +736,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AppleTree
       objectReference: {fileID: 0}
-    - target: {fileID: 4487873286869161447, guid: 10d6b1e2bda4c45989d6ccb0105e5d63, type: 3}
-      propertyPath: goldenRate
-      value: 0.005
-      objectReference: {fileID: 0}
-    - target: {fileID: 4487873286869161447, guid: 10d6b1e2bda4c45989d6ccb0105e5d63, type: 3}
-      propertyPath: goldenPrefab
-      value: 
-      objectReference: {fileID: 5942115260617831172, guid: b4391c7c32ba141bbb62cdfe926e9d0a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
