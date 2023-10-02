@@ -8,13 +8,20 @@ public class AppleTree : MonoBehaviour
 
     public GameObject applePrefab;
     public float boundary;
-    public float dropRate;
-    public float initVel = 1f;
-    public float changeRate;
+    public float dropRate; // appleDropDelay
+    public float initVel = 10f;
+    public float changeRate = 0.02f; // changeDirChance
 
     void Start()
     {
-        
+        Invoke("DropApple", 2f);
+    }
+
+    void DropApple()
+    {
+        GameObject apple = Instantiate<GameObject>(applePrefab);
+        apple.transform.position = transform.position;
+        Invoke("DropApple", dropRate);
     }
 
     // Update is called once per frame
@@ -28,10 +35,8 @@ public class AppleTree : MonoBehaviour
         {
             initVel *= -1; // to change distance
         }
-
         // pos.x += initVel is 60 units per second, (variable data), irregular movements
         pos.x += initVel * Time.deltaTime; // instead of by frame, 1ups, (smoothed)
-
         if (pos.x >= boundary)
         {
             pos.x = boundary;
@@ -43,8 +48,13 @@ public class AppleTree : MonoBehaviour
         }
 
         transform.position = pos;
+    }
 
-
-
+    void FixedUpdate() // exactly 50 times per second
+    {
+        if (Random.value < changeRate) // direction changes at random
+        {
+            initVel *= -1;
+        } 
     }
 }
