@@ -153,10 +153,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   applePrefab: {fileID: 2484056390794922161, guid: 90484ca62d52b44238313d3377264940, type: 3}
+  goldenPrefab: {fileID: 5942115260617831172, guid: b4391c7c32ba141bbb62cdfe926e9d0a, type: 3}
+  poisonPrefab: {fileID: 3187203730527759155, guid: 6cc847fccb7b0404ca94068b1e232838, type: 3}
   boundary: 25
   dropRate: 0.5
   initVel: 10
   changeRate: 0.02
+  goldenRate: 0.01
+  poisonRate: 0.005
 --- !u!54 &7196462113306462180
 Rigidbody:
   m_ObjectHideFlags: 0

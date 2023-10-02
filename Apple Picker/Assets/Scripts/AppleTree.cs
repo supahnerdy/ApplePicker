@@ -7,10 +7,14 @@ public class AppleTree : MonoBehaviour
     // Start is called before the first frame update
 
     public GameObject applePrefab;
+    public GameObject goldenPrefab;
+    public GameObject poisonPrefab;
     public float boundary;
     public float dropRate; // appleDropDelay
     public float initVel = 10f;
     public float changeRate = 0.02f; // changeDirChance
+    public float goldenRate = 0.01f;
+    public float poisonRate = 0.005f;
 
     void Start()
     {
@@ -22,6 +26,18 @@ public class AppleTree : MonoBehaviour
         GameObject apple = Instantiate<GameObject>(applePrefab);
         apple.transform.position = transform.position;
         Invoke("DropApple", dropRate);
+    }
+
+    void GoldenApple()
+    {
+        GameObject golden = Instantiate<GameObject>(goldenPrefab);
+        golden.transform.position = transform.position;
+    }
+
+    void PoisonApple()
+    {
+        GameObject poison = Instantiate<GameObject>(poisonPrefab);
+        poison.transform.position = transform.position;
     }
 
     // Update is called once per frame
@@ -55,6 +71,16 @@ public class AppleTree : MonoBehaviour
         if (Random.value < changeRate) // direction changes at random
         {
             initVel *= -1;
-        } 
+        }
+
+        if (Random.value < goldenRate)
+        {
+            GoldenApple(); // randomly generate golden apple
+        }
+
+        if (Random.value < poisonRate)
+        {
+            PoisonApple(); // randomly generate golden apple
+        }
     }
 }

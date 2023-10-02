@@ -5,11 +5,13 @@ using UnityEngine;
 public class Basket : MonoBehaviour
 {
     public ScoreCounter scoreCounter;
+    public Apple apple;
     // Start is called before the first frame update
     void Start()
     {
         GameObject scoreGO = GameObject.Find("ScoreCounter"); // find GameObj ScoreCounter in Scene
         scoreCounter = scoreGO.GetComponent<ScoreCounter>(); // get ScoreCounter component of scoreGO
+        
     }
 
     // Update is called once per frame
@@ -30,14 +32,28 @@ public class Basket : MonoBehaviour
 
     void OnCollisionEnter(Collision coll)
     {
+
         // find out what hit basket
         GameObject collidedWith = coll.gameObject;
-        if (collidedWith.CompareTag("Apple"))
+
+        // destroy any apple that hits it
+        if (collidedWith.CompareTag("Apple") || collidedWith.CompareTag("GoldApple") || collidedWith.CompareTag("PoisonApple"))
         {
             Destroy(collidedWith);
+            if (collidedWith.CompareTag("PoisonApple"))
+            {
+                // reference to ApplePicker component of Main Camera
+                ApplePicker apScript = Camera.main.GetComponent<ApplePicker>();
+                // call public AppleMissed() method of apScript
+                apScript.AppleMissed();
+            }
         }
 
-        scoreCounter.score += 100;
+        // find point value of apple
+        int applePoint = collidedWith.gameObject.GetComponent<Apple>().appleValue;
+
+        // increment point value of apple
+        scoreCounter.score += applePoint;
         HighScore.TRY_SET_HIGH_SCORE(scoreCounter.score);
     }
 }
