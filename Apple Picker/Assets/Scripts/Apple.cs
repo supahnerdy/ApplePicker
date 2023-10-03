@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Apple : MonoBehaviour
 {
-
-
-
     public ConstantForce gravity;
     public int appleValue;
     public static float destroyApple = -20f;

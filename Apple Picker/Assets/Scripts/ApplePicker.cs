@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ApplePicker : MonoBehaviour
 {
     public GameObject basketPrefab;
+    public GameObject gameOver;
     public int numBaskets = 3;
     public float basketBottomY = -14f;
     public float basketSpacingY = 2f;
@@ -14,6 +15,7 @@ public class ApplePicker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameOver.SetActive(false);
         basketList = new List<GameObject>();
         for (int i = 0; i<numBaskets; i++)
         {
@@ -47,7 +49,9 @@ public class ApplePicker : MonoBehaviour
         // restart game if no baskets left
         if (basketList.Count == 0)
         {
-            SceneManager.LoadScene("SampleScene");
+            Time.timeScale = 0f;
+            gameOver.SetActive(true);
+            //SceneManager.LoadScene("SampleScene");
         }
     }
 

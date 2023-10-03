@@ -19,6 +19,7 @@ public class AppleTree : MonoBehaviour
     void Start()
     {
         Invoke("DropApple", 2f);
+
     }
 
     void DropApple()
@@ -46,8 +47,8 @@ public class AppleTree : MonoBehaviour
         Vector3 pos = transform.position;
 
         // epsilon check for Doubles
-        if ((pos.x - 0.001 <= boundary && boundary <= pos.x + 0.001) || // hits the right side
-            (pos.x - 0.001 <= -boundary && -boundary <= pos.x + 0.001)) // hits the left side
+        if ((pos.x - 0.0001 <= boundary && boundary <= pos.x + 0.0001) || // hits the right side
+            (pos.x - 0.0001 <= -boundary && -boundary <= pos.x + 0.0001)) // hits the left side
         {
             initVel *= -1; // to change distance
         }
