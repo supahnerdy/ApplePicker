@@ -49,7 +49,7 @@ public class ApplePicker : MonoBehaviour
         // restart game if no baskets left
         if (basketList.Count == 0)
         {
-            Time.timeScale = 0f;
+            Time.timeScale = 0f; // pause everything
             gameOver.SetActive(true);
             //SceneManager.LoadScene("SampleScene");
         }

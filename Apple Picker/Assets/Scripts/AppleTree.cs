@@ -69,6 +69,7 @@ public class AppleTree : MonoBehaviour
 
     void FixedUpdate() // exactly 50 times per second
     {
+        
         if (Random.value < changeRate) // direction changes at random
         {
             initVel *= -1;
@@ -77,7 +78,7 @@ public class AppleTree : MonoBehaviour
         if (Random.value < goldenRate)
         {
             GoldenApple(); // randomly generate golden apple
-        }
+        } 
 
         if (Random.value < poisonRate)
         {
