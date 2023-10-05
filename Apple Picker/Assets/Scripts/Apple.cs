@@ -14,13 +14,18 @@ public class Apple : MonoBehaviour
         {
             this.appleValue = 100;
         }
+
+        if (this.gameObject.CompareTag("PoisonApple"))
+        {
+            this.appleValue = 0;
+        }
+
         if (this.gameObject.CompareTag("GoldApple"))
         {
             this.appleValue = 500;
             gravity = gameObject.AddComponent<ConstantForce>();
             gravity.force = new Vector3(0.0f, -15f, 0.0f);
         }
-
     }
 
     // Update is called once per frame
